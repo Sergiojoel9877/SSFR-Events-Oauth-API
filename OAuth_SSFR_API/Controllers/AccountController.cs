@@ -17,7 +17,7 @@ using OAuth_SSFR_API.Services;
 namespace OAuth_SSFR_API.Controllers
 {
     [Authorize]
-    [Route("[controller]/[action]")]
+    //[Route("api/Account")]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -53,7 +53,7 @@ namespace OAuth_SSFR_API.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        [Route("api/Account/Login")]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -214,7 +214,7 @@ namespace OAuth_SSFR_API.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        [Route("api/Account/Register")]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
